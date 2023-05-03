@@ -1,6 +1,6 @@
 # Next.js Module Federation CLI
 
-This project is a CLI for easily creating Next.js applications with support for Module Federation. With this CLI, you can quickly set up a new Next.js project and start developing your application with shared modules across different applications.
+This project is a CLI for easily creating Next.js applications with support for Module Federation. With this CLI, you can quickly set up a new Next.js project and start developing your application with shared modules across different applications and together in the package we add the prettier,eslint,jest,react testing library.
 
 
 ## 🚀 Installation
