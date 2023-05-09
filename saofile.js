@@ -1,16 +1,17 @@
-const chalk = require('chalk')
-const redent = require('redent')
-const kebabCase = require('lodash/kebabCase')
-const upperFirst = require('lodash/upperFirst')
-const camelCase = require('lodash/camelCase')
+const chalk = require('chalk');
+const redent = require('redent');
+const kebabCase = require('lodash/kebabCase');
+const upperFirst = require('lodash/upperFirst');
+const camelCase = require('lodash/camelCase');
+const addHuskyHooks = require('./addHuskyHooks');
 
-const pascalCase = (value) => upperFirst(camelCase(kebabCase(value)))
+const pascalCase = (value) => upperFirst(camelCase(kebabCase(value)));
 module.exports = {
   templateData() {
     return {
       version: this.answers.version,
       dateNow: new Date().toISOString().split('T')[0], // date as yyyy-mm-dd
-    }
+    };
   },
   transformerOptions: {
     context: {
@@ -29,7 +30,12 @@ module.exports = {
           'What should be the first version of your project? It will be used in package.json as the version',
         default: '1.0.0-alpha.1',
       },
-    ]
+      {
+        name: 'port',
+        message: 'What port do you want to connect to? (Default:3000)',
+        default: '3000',
+      },
+    ];
   },
   actions() {
     // A series of actions to manipulate files
@@ -53,13 +59,14 @@ module.exports = {
           env: '.env',
         },
       },
-    ]
+    ];
   },
   async completed() {
     //  A function that will be invoked when the whole process is finished.
-    this.gitInit()
-    await this.npmInstall()
-    this.showProjectTips()
+    this.gitInit();
+    await this.npmInstall();
+    this.showProjectTips();
+    addHuskyHooks(this.outFolder);
 
     const message = redent(
       `
@@ -74,12 +81,10 @@ module.exports = {
         `For more details about app, check out ${this.outFolder}/README.md`
       )}
 
-      ${chalk.green(
-        'Welcome Module Federation Development.'
-      )}
+      ${chalk.green('Welcome Module Federation Development.')}
       `,
       2
-    )
-    console.info(message)
+    );
+    console.info(message);
   },
-}
+};

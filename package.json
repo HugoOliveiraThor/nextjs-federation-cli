@@ -4,7 +4,9 @@
   "description": "Scaffold a Module Federation App structure",
   "main": "./index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check": "prettier --check 'template/src/**/*.tsx'",
+    "format": "prettier --write ."
   },
   "bin": {
     "create-nextjs-mf-cli": "./index.js"
@@ -22,6 +24,7 @@
     "chalk": "4.1.0",
     "inquirer": "7.3.3",
     "lodash": "^4.17.21",
-    "sao": "1.7.1"
+    "sao": "1.7.1",
+    "prettier": "^2.8.8"
   }
 }

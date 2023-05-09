@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const NextFederationPlugin = require("@module-federation/nextjs-mf");
+const NextFederationPlugin = require('@module-federation/nextjs-mf');
 
 module.exports = {
   // Disable Next.js cache in development
@@ -10,10 +10,10 @@ module.exports = {
     if (!options.isServer) {
       config.plugins.push(
         new NextFederationPlugin({
-          name: "menu", //TODO: Change to name of the repo without camelCase
-          filename: "static/chunks/remoteEntry.js",
+          name: '<%= context.outFolder %>', //TODO: Change to name of the repo without camelCase
+          filename: 'static/chunks/remoteEntry.js',
           exposes: {
-            "./component/Mycomponent": "./src/components/MyComponent",
+            './component/Mycomponent': './src/components/MyComponent',
           },
           shared: {},
         })

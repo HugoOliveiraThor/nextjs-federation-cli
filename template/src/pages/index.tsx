@@ -1,9 +1,9 @@
-import { MyComponent } from '@/components/MyComponent'
+import { MyComponent } from '@/components/MyComponent';
 
 export default function Home() {
   return (
     <>
       <MyComponent></MyComponent>
     </>
-  )
+  );
 }
